@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
-    use HasFactory
+    use HasFactory;
+    
     protected $fillable = [
         'name',
         'introduction',
@@ -20,6 +21,24 @@ class Shop extends Model
         'sns_account',
         'official_website',
     ];
-
-
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+    
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+    
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

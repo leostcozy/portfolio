@@ -19,9 +19,9 @@ return new class extends Migration
             $table->text('introduction');
             $table->string('address');
             $table->string('post_code');
-            $table->string('phone_number');
-            $table->string('opening_time');
-            $table->string('closing_time');
+            $table->string('phone_number'); //$table->unsignedInteger('phone_number');だとデータ型がFakerを使うとstrだから使えない
+            $table->time('opening_time')->nullable(); 
+            $table->time('closing_time')->nullable();
             $table->string('regular_holiday');
             $table->string('sns_account')->nullable(); 
             $table->string('official_website')->nullable();

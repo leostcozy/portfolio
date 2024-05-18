@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password', //ここに追加
     ];
 
     /**
@@ -43,8 +43,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    public function follow()
+    public function following() //フォローしてる側
     {
-        return $this->belongsTo(Follow::class)
+        return $this->belongsToMany(User::class, 'follows','follower_id', 'followee_id');
+    }
+    
+    public function followed() //フォローされてる側
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followee_id', 'follower_id');
+    }
+    
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+    
+    public function reviews()
+    {
+        return $this->hasMany(Follow::class);
     }
 }
