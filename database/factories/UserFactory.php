@@ -4,7 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
+use Faker\Generator as Faker;
+use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -18,11 +19,16 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'username' => $this->faker->name, // $this->fakerを使用
+            'email' => $this->faker->safeEmail,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => bcrypt('secret'), // パスワードのハッシュ化
+            'description' => $this->faker->text(200), // テキストの生成
+            'icon_photo' => $this->faker->imageUrl(), // イメージURLの生成
+            'gender' => $this->faker->randomElement(['male', 'female']), // 性別のランダム選択
             'remember_token' => Str::random(10),
+            'created_at' => $this->faker->dateTimeBetween('-1 year'), // 日時範囲内の日付・時間の生成
+            'updated_at' => $this->faker->dateTimeBetween('-1 year'), 
         ];
     }
 
