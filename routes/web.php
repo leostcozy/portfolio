@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/list', [ShopController::class, 'getShopslist'])->name('shops.list'); //追加
+    Route::get('/shops/{shop}', [ShopController::class ,'show'])->name('shops.show'); //追加
 });
 
 require __DIR__.'/auth.php';
