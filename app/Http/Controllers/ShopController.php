@@ -13,4 +13,9 @@ class ShopController extends Controller
         return view('shops.list')->with(['shops' => $shop->getPaginateByLimit()]);
     }
     
+    public function show(Shop $shop)
+    {
+        return view('shops.show')->with(['shop' => $shop]);
+    }
+    
 }
