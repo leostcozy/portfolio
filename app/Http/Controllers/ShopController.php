@@ -18,4 +18,8 @@ class ShopController extends Controller
         return view('shops.show')->with(['shop' => $shop]);
     }
     
+    public function create()
+    {
+        return view('shops.create');
+    }
 }
