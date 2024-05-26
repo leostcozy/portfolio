@@ -22,6 +22,12 @@
                     <li class="text-gray-600 mb-2"><strong>公式ウェブサイト:</strong> <a href="{{ $shop->official_website }}" class="text-blue-500 hover:text-blue-700">こちら</a></li>
                 </ul>
             </div>
+            <!-- 戻るボタン -->
+            <div class="flex justify-start py-4 px-6">
+                <a href="/list" class="text-gray-600 mb-2 font-medium text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                    戻る
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>

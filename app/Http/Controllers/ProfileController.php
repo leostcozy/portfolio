@@ -69,4 +69,10 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    
+    public function get_user($user_id){
+
+        $user = User::with('following')->with('followed')->findOrFail($user_id);
+        return response()->json($user);
+    }
 }
