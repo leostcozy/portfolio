@@ -19,7 +19,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'username' => $this->faker->name, // $this->fakerを使用
+            'name' => $this->faker->name, // $this->fakerを使用
             'email' => $this->faker->safeEmail,
             'email_verified_at' => now(),
             'password' => bcrypt('secret'), // パスワードのハッシュ化
